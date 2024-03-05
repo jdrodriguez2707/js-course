@@ -1,38 +1,44 @@
-// Immutable
-let number1 = 10;
-let number2 = number1;
-number1 = 15;
-// console.log(number2);
+// Pass by value
 
-function changeValue(number3) {
-  number3 = 12;
+let x = 1;
+let y = "Hi";
+let z = null;
+
+a = x;
+b = y;
+c = z;
+
+console.log(x, y, z, a, b, c);
+
+a = 12;
+b = "Platzi";
+c = undefined;
+
+let number = 5;
+
+function editValue(value) {
+  value = 10;
 }
 
-var number3 = 20;
-changeValue(number3);
-// console.log(number3);
+editValue(number);
+console.log(number);
 
-// Mutable
-let person = { name: "Johan", age: 19 };
-person.age = 20;
-// console.log(person);
+// Pass by reference
 
-let numbers = [1, 2, 3, 4];
-numbers[0] = 0;
-// console.log(numbers);
+let fruits = ["apple"];
+fruits.push("pineapple");
+console.log(fruits);
+
+let breads = ["🥐"];
+let copyOfBreads = breads;
+breads.push("🥖");
+console.log(breads, copyOfBreads);
+
+let person = { name: "Juan" };
 
 function editName(object) {
-  object.name = "Frosty";
+  object.name = "Pedro";
 }
 
 editName(person);
-// console.log(person);
-
-let box1 = { toy: "Woody" };
-let box2 = box1;
-
-box1.toy = "Buzz Lightyear";
-// console.log(box2.toy);
-
-// Objects are passed by memory reference
-// Primitive data is passed by value copy
+console.log(person);
