@@ -1,17 +1,38 @@
-let box = "Woody";
-console.log(box);
+// Immutable
+let number1 = 10;
+let number2 = number1;
+number1 = 15;
+// console.log(number2);
 
-const pi = 3.14;
-console.log(pi);
+function changeValue(number3) {
+  number3 = 12;
+}
 
-var number = 10;
-var number = 12;
-console.log(number);
+var number3 = 20;
+changeValue(number3);
+// console.log(number3);
 
-let letter = "A";
-letter = "B";
-console.log(letter);
+// Mutable
+let person = { name: "Johan", age: 19 };
+person.age = 20;
+// console.log(person);
 
-// 'let' and 'const' have block scope, while 'var' has function scope
-// 'var' can be re-declared and reassigned
-// 'const' cannot be re-declared nor reassigned
+let numbers = [1, 2, 3, 4];
+numbers[0] = 0;
+// console.log(numbers);
+
+function editName(object) {
+  object.name = "Frosty";
+}
+
+editName(person);
+// console.log(person);
+
+let box1 = { toy: "Woody" };
+let box2 = box1;
+
+box1.toy = "Buzz Lightyear";
+// console.log(box2.toy);
+
+// Objects are passed by memory reference
+// Primitive data is passed by value copy
