@@ -1,32 +1,30 @@
-// Strings
-let firstOption = 'Single quotes';
-let secondOption = "Double quotation marks";
-let thirdOption = `Grave accent`;
+// Escape characters
+const degree = "I'm software engineer";
+// console.log(degree);
+const degree2 = 'I\'m software engineer';
+// console.log(degree2);
+const degree3 = `I'm software engineer`;
+// console.log(degree3);
 
-// Concatenation (+)
-let address = "Cra. 123 #45-12";
-let city = "Colombia";
-let fullAddress = "My address is " + address + city;
-fullAddress;
-let addressWithoutSpace = "My address is " + address + " " + city;
-addressWithoutSpace;
+// Long strings
+const poem =
+  "God is always with me,\n" +
+  "He makes me stronger,\n" +
+  "and more confident,\n" +
+  "So, everything will be okay.";
 
-// Concatenation (Template literals)
-let firstName = "Johan Rodriguez";
-let country = "CO";
-let profile = `My profile says "${firstName} - ${country}"`;
-profile;
+// console.log(poem);
 
-// Concatenation (join())
-let idea1 = "I love";
-let idea2 = "Korean";
-let idea3 = "people";
-let thoughts = [idea1, idea2, idea3];
-console.log(thoughts.join("🥢"));
+const poem2 = "God is always with me,\n\
+He makes me stronger,\n\
+and more confident,\n\
+So, everything will be okay.";
 
-// Concatenation (concat())
-let hobby1 = "watching movies or series";
-let hobby2 = "listening to music";
-let hobby3 = "playing video games";
-let hobbies = "My hobbies are: ".concat(hobby1, ", ", hobby2, ", and ", hobby3, ".");
-hobbies;
+// console.log(poem2);
+
+const poem3 = `God\fis always with \bme,
+He makes me stronger,\v
+and \rmore confident,
+So,\teverything will be okay.`;
+
+console.log(poem3);
