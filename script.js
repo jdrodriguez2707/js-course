@@ -1,30 +1,43 @@
-// Escape characters
-const degree = "I'm software engineer";
-// console.log(degree);
-const degree2 = 'I\'m software engineer';
-// console.log(degree2);
-const degree3 = `I'm software engineer`;
-// console.log(degree3);
+// primitive strings
+let primitiveString = "I'm a primitive string";
+console.log(typeof primitiveString);
 
-// Long strings
-const poem =
-  "God is always with me,\n" +
-  "He makes me stronger,\n" +
-  "and more confident,\n" +
-  "So, everything will be okay.";
+let anotherPrimitiveString = String("I'm a primitive string too");
+console.log(typeof anotherPrimitiveString);
 
-// console.log(poem);
+// strings as objects
+let objectString = new String("I'm an object string");
+console.log(typeof objectString);
 
-const poem2 = "God is always with me,\n\
-He makes me stronger,\n\
-and more confident,\n\
-So, everything will be okay.";
+// string manipulation
+let greeting = "Hi. How are you?";
+console.log(greeting[0]);
+console.log(greeting.charAt(5));
+console.log(greeting.indexOf("How"));
+console.log(greeting.indexOf("JS"));
 
-// console.log(poem2);
+let firstIndex = greeting.indexOf("H");
+console.log(firstIndex);
+let secondIndex = greeting.indexOf("H", firstIndex + 1);
+console.log(secondIndex);
 
-const poem3 = `God\fis always with \bme,
-He makes me stronger,\v
-and \rmore confident,
-So,\teverything will be okay.`;
+console.log(greeting.lastIndexOf("H"));
+console.log(greeting.length);
+console.log(greeting.toLocaleLowerCase());
+console.log(greeting.toLocaleUpperCase());
 
-console.log(poem3);
+let dividedGreeting = greeting.split(" ");
+console.log(dividedGreeting);
+console.log(dividedGreeting[3]);
+console.log(greeting.replace("Hi", "Hello"));
+
+let greetingWithSpaces = " Hello World ";
+console.log(greetingWithSpaces.trim());
+
+console.log(greeting.slice(0, 3));
+console.log(greeting.slice(-5));
+console.log(greeting.includes("?"));
+console.log(greeting.startsWith("H"));
+console.log(greeting.endsWith("?"));
+console.log(greeting.repeat(2));
+console.log(greeting.substring(12, 16));
