@@ -1,43 +1,35 @@
-// primitive strings
-let primitiveString = "I'm a primitive string";
-console.log(typeof primitiveString);
+let integer = 10;
+let decimal = 3.14;
+console.log(typeof integer, typeof decimal);
 
-let anotherPrimitiveString = String("I'm a primitive string too");
-console.log(typeof anotherPrimitiveString);
+let scientificNotation = 5e3;
+console.log(scientificNotation);
 
-// strings as objects
-let objectString = new String("I'm an object string");
-console.log(typeof objectString);
+let notANumber = NaN;
+console.log(notANumber);
 
-// string manipulation
-let greeting = "Hi. How are you?";
-console.log(greeting[0]);
-console.log(greeting.charAt(5));
-console.log(greeting.indexOf("How"));
-console.log(greeting.indexOf("JS"));
+let infinite = Infinity;
+console.log(infinite);
 
-let firstIndex = greeting.indexOf("H");
-console.log(firstIndex);
-let secondIndex = greeting.indexOf("H", firstIndex + 1);
-console.log(secondIndex);
+let addition = 2 + 2;
+let subtraction = 10 - 4;
+let multiplication = 2 * 4;
+let division = 10 / 2;
+let remainder = 20 % 2;
+let exponentiation = 2 ** 3;
 
-console.log(greeting.lastIndexOf("H"));
-console.log(greeting.length);
-console.log(greeting.toLocaleLowerCase());
-console.log(greeting.toLocaleUpperCase());
+// Precision
+let result = 0.1 + 0.2;
+result;
+let newResult = result.toFixed(1);
+console.log(newResult);
+console.log(result === 0.3);
 
-let dividedGreeting = greeting.split(" ");
-console.log(dividedGreeting);
-console.log(dividedGreeting[3]);
-console.log(greeting.replace("Hi", "Hello"));
-
-let greetingWithSpaces = " Hello World ";
-console.log(greetingWithSpaces.trim());
-
-console.log(greeting.slice(0, 3));
-console.log(greeting.slice(-5));
-console.log(greeting.includes("?"));
-console.log(greeting.startsWith("H"));
-console.log(greeting.endsWith("?"));
-console.log(greeting.repeat(2));
-console.log(greeting.substring(12, 16));
+// Advance operations
+console.log(Math.sqrt(16));
+console.log(Math.abs(-5));
+console.log(Math.random());
+console.log(Math.round(3.6));
+console.log(Math.round(result * 100) / 100);
+console.log(Math.floor(9.99999));
+console.log(Math.ceil(1.0000001));
