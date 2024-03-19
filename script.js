@@ -1,17 +1,29 @@
-let isActive = true;
-let hasPermission = false;
+// Null
+let snoopy = null;
+console.log(snoopy);
+console.log(typeof snoopy);
 
-// Implicit conversion
-let result = 5 > 3;
-console.log(result);
+// Undefined
+let name;
+console.log(name);
 
-let companyName = "Platzi";
-console.log(!!companyName);
+// Symbol
+const UNIQUE_ID = Symbol("id");
+console.log(UNIQUE_ID);
+console.log(typeof UNIQUE_ID);
+const SYMBOL1 = Symbol(1);
+const SYMBOL2 = Symbol(1);
+console.log(SYMBOL1 === SYMBOL2);
 
-// Explicit conversion
-let value = 0;
-let anotherValue = -25;
-let explicitBoolean = Boolean(anotherValue);
-console.log(explicitBoolean);
+const ID = Symbol("id");
+let user = {};
+user[ID] = "1234";
+console.log(user);
 
-// It will only be false with the number 0. With other numbers it will always be true
+// BigInt
+let bigNumber = BigInt(21312983128301983109381902830193812098309128312098390128);
+console.log(typeof bigNumber);
+console.log(bigNumber);
+const numberOfParticlesInTheUniverse = 10n ** 100n; 
+console.log(typeof numberOfParticlesInTheUniverse);
+console.log(numberOfParticlesInTheUniverse);
