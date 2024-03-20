@@ -1,46 +1,29 @@
-// Explicit Type Casting
+// Social media profile
 
-let string = "10";
-let integer = parseInt(string);
-console.log(integer);
-console.log(typeof integer);
+// 1. User information
+let userName = "rafitaDEV";
+let fullName = "Johan Rodriguez";
+let age = 19;
+let isStudent = true;
 
-let stringDecimal = "1.74";
-let float = parseFloat(stringDecimal);
-console.log(float);
-console.log(typeof float);
+// 2. Address
+const address = {
+  street: "26",
+  city: "Barranquilla",
+  department: "Atlántico",
+  zipCode: "080005"
+};
 
-let binary = "10011";
-let decimal = parseInt(binary, 2);
-console.log(decimal);
-console.log(typeof decimal);
+// 3. Hobbies
+const hobbies = ["watching movies and series", "playing video games", "listening to music"];
 
-// Implicit Type Casting
+// 4. Generating personalized bio
+let personalizedBio = `Hi there!👋🏻 My name's ${fullName}, but you can also call me ${userName} 😉.
+I'm ${age} years old and it's ${isStudent} that I'm a student 🤓.
+I live in ${address.city}, ${address.department} ☀️. 
+I love ${hobbies[0]}, ${hobbies[1]} and ${hobbies[2]} 🎥🎮🎧. 
+Follow me if you have the same hobbies. I hope to meet you someday.
+Have a nice day 😎.`;
 
-let addition = "1" + 9;
-console.log(addition);
-
-let additionWithBoolean = "19" + true;
-console.log(additionWithBoolean);
-
-let additionWithNumber = 18 + true;
-console.log(additionWithNumber);
-
-let stringValue = "10";
-let numberValue = 10;
-let booleanValue = true;
-
-console.log(stringValue + stringValue); // Concatenation
-console.log(stringValue + numberValue); // Concatenation
-console.log(stringValue + booleanValue); // Concatenation
-
-console.log(numberValue + stringValue); // Concatenation
-console.log(numberValue + numberValue); // Addition
-console.log(numberValue + booleanValue); // Addition
-
-console.log(booleanValue + stringValue); // Concatenation
-console.log(booleanValue + numberValue); // Addition
-console.log(booleanValue + booleanValue); // Addition
-
-console.log(numberValue + booleanValue + stringValue);
-console.log(numberValue + (booleanValue + stringValue));
+// Print user profile 
+console.log(personalizedBio);
