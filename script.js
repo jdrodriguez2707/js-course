@@ -1,14 +1,42 @@
-function calculateDiscountedPrice(price, discountPercentage) {
-  let discount = (price * discountPercentage) / 100;
-  let priceWithDiscount = price - discount;
+/*
 
-  return priceWithDiscount;
+// Callback
+function a() {}
+function b(a) {}
+b(a);
+
+// Return functions
+function a() {
+  function b() {}
+  return b;
 }
 
-let originalPrice = 100;
-let discountPercentage = 20;
-let finalPrice = calculateDiscountedPrice(originalPrice, discountPercentage);
+// Function expressions
+const a = function () {};
 
-console.log(`Original price: $${originalPrice}
-Discount: ${discountPercentage}%
-Price with discount: $${finalPrice}`);
+// Functions have properties and methods
+function a() {}
+const obj = {};
+a.call(obj);
+
+// Nested functions
+function a() {
+  function b() {
+    function c() {}
+    c();
+  }
+  b();
+}
+a();
+
+*/
+
+// Is it possible save functions in objects?
+const rocket = {
+  name: "Falcon 9",
+  launchMessage: () => {
+    console.log("🔥");
+  },
+};
+
+rocket.launchMessage();
