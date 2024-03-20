@@ -1,29 +1,46 @@
-// Null
-let snoopy = null;
-console.log(snoopy);
-console.log(typeof snoopy);
+// Explicit Type Casting
 
-// Undefined
-let name;
-console.log(name);
+let string = "10";
+let integer = parseInt(string);
+console.log(integer);
+console.log(typeof integer);
 
-// Symbol
-const UNIQUE_ID = Symbol("id");
-console.log(UNIQUE_ID);
-console.log(typeof UNIQUE_ID);
-const SYMBOL1 = Symbol(1);
-const SYMBOL2 = Symbol(1);
-console.log(SYMBOL1 === SYMBOL2);
+let stringDecimal = "1.74";
+let float = parseFloat(stringDecimal);
+console.log(float);
+console.log(typeof float);
 
-const ID = Symbol("id");
-let user = {};
-user[ID] = "1234";
-console.log(user);
+let binary = "10011";
+let decimal = parseInt(binary, 2);
+console.log(decimal);
+console.log(typeof decimal);
 
-// BigInt
-let bigNumber = BigInt(21312983128301983109381902830193812098309128312098390128);
-console.log(typeof bigNumber);
-console.log(bigNumber);
-const numberOfParticlesInTheUniverse = 10n ** 100n; 
-console.log(typeof numberOfParticlesInTheUniverse);
-console.log(numberOfParticlesInTheUniverse);
+// Implicit Type Casting
+
+let addition = "1" + 9;
+console.log(addition);
+
+let additionWithBoolean = "19" + true;
+console.log(additionWithBoolean);
+
+let additionWithNumber = 18 + true;
+console.log(additionWithNumber);
+
+let stringValue = "10";
+let numberValue = 10;
+let booleanValue = true;
+
+console.log(stringValue + stringValue); // Concatenation
+console.log(stringValue + numberValue); // Concatenation
+console.log(stringValue + booleanValue); // Concatenation
+
+console.log(numberValue + stringValue); // Concatenation
+console.log(numberValue + numberValue); // Addition
+console.log(numberValue + booleanValue); // Addition
+
+console.log(booleanValue + stringValue); // Concatenation
+console.log(booleanValue + numberValue); // Addition
+console.log(booleanValue + booleanValue); // Addition
+
+console.log(numberValue + booleanValue + stringValue);
+console.log(numberValue + (booleanValue + stringValue));
