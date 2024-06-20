@@ -1,39 +1,31 @@
-// The 'this' identifier is a reference to the object that is executing in the current context of the code
+const owner = "Johan";
+const address = "Street 20B";
 
-// Implicit binding
-
-const house = {
-  dogName: "Coconut",
-  dogGreeting: function () {
-    console.log(`Hi, I'm ${this.dogName}`);
-  },
-};
-
-house.dogGreeting();
-
-// Explicit binding
-
-function dogGreeting() {
-  console.log(`Hi, I'm ${this.dogName}`);
+function dogGreeting(owner, address) {
+  console.log(`Hi, I'm ${this.dogName} and I live with ${owner} at ${address}`);
 }
 
 const newHouse = {
   dogName: "Frosty",
 };
 
-dogGreeting.call(newHouse);
+dogGreeting.call(newHouse, owner, address);
 
-function newDogGreeting(owner, address) {
-  console.log(`Hi, I'm ${this.dogName} and I live with ${owner} at ${address}`);
+const necessaryValues = [owner, address];
+dogGreeting.apply(newHouse, necessaryValues);
+
+const bindingWithBind = dogGreeting.bind(newHouse, owner, address);
+bindingWithBind();
+
+// Quiz
+
+const cartoon = { name: "Cow and Chick" };
+
+function memory(character) {
+  console.log(
+    `${this.name} was my favorite cartoon. I loved watching ${character}'s adventures.`
+  );
 }
 
-const owner = "Johan";
-const address = "Street 20B";
-
-newDogGreeting.call(newHouse, owner, address);
-
-// function showThis() {
-//   console.log(this); 
-// }
-
-// showThis(); // Global (Window in browsers)
+memory.call(cartoon, "Cow"); // "Cow and Chick was my favorite cartoon. I loved watching Cow's adventures"
+memory.bind(cartoon, "Chick"); // function
