@@ -1,42 +1,40 @@
-/*
+// Pure functions
 
-// Callback
-function a() {}
-function b(a) {}
-b(a);
+// Side effects (when pure functions are no longer pure)
+// 1. Modify global variables
+// 2. Modify parameters
+// 3. HTTP requests
+// 4. Print messages on screen or console
+// 5. DOM manipulation
+// 6. Get current time
 
-// Return functions
-function a() {
-  function b() {}
-  return b;
+function sum(a, b) {
+  return a + b;
 }
 
-// Function expressions
-const a = function () {};
+// Impure functions
 
-// Functions have properties and methods
-function a() {}
-const obj = {};
-a.call(obj);
-
-// Nested functions
-function a() {
-  function b() {
-    function c() {}
-    c();
-  }
-  b();
+function sum(a, b) {
+  console.log("A: ", a);
+  return a + b;
 }
-a();
 
-*/
+let total = 0;
 
-// Is it possible save functions in objects?
-const rocket = {
-  name: "Falcon 9",
-  launchMessage: () => {
-    console.log("🔥");
-  },
-};
+function sumWithSideEffect(a) {
+  total += a;
+  return total;
+}
 
-rocket.launchMessage();
+// Pure function
+function square(x) {
+  return x * x;
+}
+
+function addTen(y) {
+  return y + 10;
+}
+
+const number = 5;
+const finalResult = addTen(square(number));
+console.log(finalResult);
