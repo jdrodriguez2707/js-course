@@ -1,40 +1,39 @@
-// Pure functions
+// The 'this' identifier is a reference to the object that is executing in the current context of the code
 
-// Side effects (when pure functions are no longer pure)
-// 1. Modify global variables
-// 2. Modify parameters
-// 3. HTTP requests
-// 4. Print messages on screen or console
-// 5. DOM manipulation
-// 6. Get current time
+// Implicit binding
 
-function sum(a, b) {
-  return a + b;
+const house = {
+  dogName: "Coconut",
+  dogGreeting: function () {
+    console.log(`Hi, I'm ${this.dogName}`);
+  },
+};
+
+house.dogGreeting();
+
+// Explicit binding
+
+function dogGreeting() {
+  console.log(`Hi, I'm ${this.dogName}`);
 }
 
-// Impure functions
+const newHouse = {
+  dogName: "Frosty",
+};
 
-function sum(a, b) {
-  console.log("A: ", a);
-  return a + b;
+dogGreeting.call(newHouse);
+
+function newDogGreeting(owner, address) {
+  console.log(`Hi, I'm ${this.dogName} and I live with ${owner} at ${address}`);
 }
 
-let total = 0;
+const owner = "Johan";
+const address = "Street 20B";
 
-function sumWithSideEffect(a) {
-  total += a;
-  return total;
-}
+newDogGreeting.call(newHouse, owner, address);
 
-// Pure function
-function square(x) {
-  return x * x;
-}
+// function showThis() {
+//   console.log(this); 
+// }
 
-function addTen(y) {
-  return y + 10;
-}
-
-const number = 5;
-const finalResult = addTen(square(number));
-console.log(finalResult);
+// showThis(); // Global (Window in browsers)
