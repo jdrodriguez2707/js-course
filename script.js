@@ -1,33 +1,41 @@
-// Functions expressions
+// const personalizedMessage = () => "Goodbye everybody!";
 
-const greeting = function (name) {
-  return `Hi, ${name}`;
-};
+// function Rocket(name, ownMessage) {
+//   this.name = name;
+//   this.launchMessage = ownMessage;
+// }
 
-// Arrow function with explicit return
+// const falcon9 = new Rocket("Falcon 9", personalizedMessage());
+// const falconHeavy = new Rocket("Falcon Heavy", personalizedMessage());
+// console.log(falcon9);
+// console.log(falcon9.name);
+// console.log(falcon9.launchMessage);
 
-const newGreeting = (name) => {
-  return `Hi, ${name}`;
-};
+// const RocketWithArrowFunction = (name, ownMessage) => ({
+//   name: name,
+//   launchMessage: ownMessage
+// });
 
-// Arrow function with implicit return
+// const personalizedMessageForArrowFunction = () => "Successful launch!";
+// const falcon10 = RocketWithArrowFunction("Falcon10", personalizedMessageForArrowFunction());
+// console.log(falcon10);
+// console.log(falcon10.name);
+// console.log(falcon10.launchMessage);
 
-const newGreetingImplicit = name => `Hi, ${name}`;
-
-// Lexical binding
-
-const fictionalCharacter = {
-  name: "Uncle Ben",
-  messageWithTraditionalFunction: function (message) {
-    console.log(`${this.name} says: ${message}`);
-  },
-  messageWithArrowFunction: (message) => {
-    console.log(`${this.name} says: ${message}`);
+class Rocket {
+  constructor(name) {
+    this.name = name;
   }
-};
 
-fictionalCharacter.messageWithTraditionalFunction("With great power comes great responsibility.");
-fictionalCharacter.messageWithArrowFunction("Beware of Doctor Octopus."); // There's no binding with arrow functions
+  personalizedMessage = () => "Goodbye everybody!";
+}
 
-// https://chatgpt.com/share/895e5a08-4b2f-481c-918a-9bafff03be8e
+const falcon9 = new Rocket("Falcon9");
+console.log(falcon9);
+console.log(falcon9.name);
+console.log(falcon9.personalizedMessage());
 
+const falcon10 = new Rocket("Falcon10");
+console.log(falcon10);
+console.log(falcon10.name);
+console.log(falcon10.personalizedMessage());
