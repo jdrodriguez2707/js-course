@@ -1,31 +1,33 @@
-const owner = "Johan";
-const address = "Street 20B";
+// Functions expressions
 
-function dogGreeting(owner, address) {
-  console.log(`Hi, I'm ${this.dogName} and I live with ${owner} at ${address}`);
-}
-
-const newHouse = {
-  dogName: "Frosty",
+const greeting = function (name) {
+  return `Hi, ${name}`;
 };
 
-dogGreeting.call(newHouse, owner, address);
+// Arrow function with explicit return
 
-const necessaryValues = [owner, address];
-dogGreeting.apply(newHouse, necessaryValues);
+const newGreeting = (name) => {
+  return `Hi, ${name}`;
+};
 
-const bindingWithBind = dogGreeting.bind(newHouse, owner, address);
-bindingWithBind();
+// Arrow function with implicit return
 
-// Quiz
+const newGreetingImplicit = name => `Hi, ${name}`;
 
-const cartoon = { name: "Cow and Chick" };
+// Lexical binding
 
-function memory(character) {
-  console.log(
-    `${this.name} was my favorite cartoon. I loved watching ${character}'s adventures.`
-  );
-}
+const fictionalCharacter = {
+  name: "Uncle Ben",
+  messageWithTraditionalFunction: function (message) {
+    console.log(`${this.name} says: ${message}`);
+  },
+  messageWithArrowFunction: (message) => {
+    console.log(`${this.name} says: ${message}`);
+  }
+};
 
-memory.call(cartoon, "Cow"); // "Cow and Chick was my favorite cartoon. I loved watching Cow's adventures"
-memory.bind(cartoon, "Chick"); // function
+fictionalCharacter.messageWithTraditionalFunction("With great power comes great responsibility.");
+fictionalCharacter.messageWithArrowFunction("Beware of Doctor Octopus."); // There's no binding with arrow functions
+
+// https://chatgpt.com/share/895e5a08-4b2f-481c-918a-9bafff03be8e
+
