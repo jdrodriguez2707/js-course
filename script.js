@@ -1,41 +1,49 @@
-// const personalizedMessage = () => "Goodbye everybody!";
+// Vehicle management system
 
-// function Rocket(name, ownMessage) {
-//   this.name = name;
-//   this.launchMessage = ownMessage;
-// }
+// Traditional function
 
-// const falcon9 = new Rocket("Falcon 9", personalizedMessage());
-// const falconHeavy = new Rocket("Falcon Heavy", personalizedMessage());
-// console.log(falcon9);
-// console.log(falcon9.name);
-// console.log(falcon9.launchMessage);
-
-// const RocketWithArrowFunction = (name, ownMessage) => ({
-//   name: name,
-//   launchMessage: ownMessage
-// });
-
-// const personalizedMessageForArrowFunction = () => "Successful launch!";
-// const falcon10 = RocketWithArrowFunction("Falcon10", personalizedMessageForArrowFunction());
-// console.log(falcon10);
-// console.log(falcon10.name);
-// console.log(falcon10.launchMessage);
-
-class Rocket {
-  constructor(name) {
-    this.name = name;
-  }
-
-  personalizedMessage = () => "Goodbye everybody!";
+function Vehicle(brand, model, year) {
+  this.brand = brand;
+  this.model = model;
+  this.year = year;
 }
 
-const falcon9 = new Rocket("Falcon9");
-console.log(falcon9);
-console.log(falcon9.name);
-console.log(falcon9.personalizedMessage());
+Vehicle.prototype.getInfo = function () {
+  return `Vehicle information:\nBrand: ${this.brand}\nModel: ${this.model}\nYear: ${this.year}`;
+}
 
-const falcon10 = new Rocket("Falcon10");
-console.log(falcon10);
-console.log(falcon10.name);
-console.log(falcon10.personalizedMessage());
+const myFirstVehicle = new Vehicle("Mazda", "CX30", "2021");
+console.log(myFirstVehicle.getInfo());
+
+// Arrow function
+
+const createCar = (brand, model, year, doors) => ({
+  brand: brand,
+  model: model,
+  year: year,
+  doors: doors,
+  getCarInfo: function () {
+    return `Car information:\nBrand: ${this.brand}\nModel: ${this.model}\nYear: ${this.year}\nDoors: ${this.doors}`;
+  } 
+});
+
+const myFirstCar = createCar("Renault", "Clio", "2011", 4);
+console.log(myFirstCar.getCarInfo());
+
+// Classes
+
+class Motorcycle {
+  constructor(brand, model, year, type) {
+    this.brand = brand;
+    this.model = model;
+    this.year = year;
+    this.type = type;
+  }
+
+  getMotorcycleInfo() {
+    return `Motorcycle information:\nBrand: ${this.brand}\nModel: ${this.model}\nYear: ${this.year}\nType: ${this.type}`;
+  } 
+}
+
+const myFirstMotorcycle = new Motorcycle("Honda", "X-ADV", "2022", "Liquid-cooled 4-stroke 8-valve.");
+console.log(myFirstMotorcycle.getMotorcycleInfo());
