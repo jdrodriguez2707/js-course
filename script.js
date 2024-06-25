@@ -1,49 +1,40 @@
-// Vehicle management system
+// Captain tsubasa players
 
-// Traditional function
+function Player(name, position, number, nationalSelection) {
+  this.name = name;
+  this.position = position;
+  this.number = number;
+  this.nationalSelection = nationalSelection;
+  this.isCaptain = false;
+  this.displayInfo = function () {
+    console.log(`
+      Player information:
 
-function Vehicle(brand, model, year) {
-  this.brand = brand;
-  this.model = model;
-  this.year = year;
+      Name: ${this.name}
+      Position: ${this.position}
+      Number: ${this.number}
+      National selection: ${this.nationalSelection}
+      Captain: ${this.isCaptain ? "Yes" : "No"}
+    `);
+  };
+  this.becomeCaptain = function () {
+    this.isCaptain = true;
+    console.log(`${this.name} has become captain of ${this.nationalSelection}`);
+  };
 }
 
-Vehicle.prototype.getInfo = function () {
-  return `Vehicle information:\nBrand: ${this.brand}\nModel: ${this.model}\nYear: ${this.year}`;
-}
+const tsubasa = new Player("Tsubasa Ozora", "MF", "10", "Japan");
+const genzo = new Player("Genzo Wakabayashi", "GK", "1", "Japan");
+const taro = new Player("Taro Misaki", "MF", "11", "Japan");
 
-const myFirstVehicle = new Vehicle("Mazda", "CX30", "2021");
-console.log(myFirstVehicle.getInfo());
+// tsubasa.displayInfo();
+// genzo.displayInfo();
+// taro.displayInfo();
 
-// Arrow function
+tsubasa.becomeCaptain();
 
-const createCar = (brand, model, year, doors) => ({
-  brand: brand,
-  model: model,
-  year: year,
-  doors: doors,
-  getCarInfo: function () {
-    return `Car information:\nBrand: ${this.brand}\nModel: ${this.model}\nYear: ${this.year}\nDoors: ${this.doors}`;
-  } 
-});
+tsubasa.displayInfo();
+genzo.displayInfo();
+taro.displayInfo();
 
-const myFirstCar = createCar("Renault", "Clio", "2011", 4);
-console.log(myFirstCar.getCarInfo());
 
-// Classes
-
-class Motorcycle {
-  constructor(brand, model, year, type) {
-    this.brand = brand;
-    this.model = model;
-    this.year = year;
-    this.type = type;
-  }
-
-  getMotorcycleInfo() {
-    return `Motorcycle information:\nBrand: ${this.brand}\nModel: ${this.model}\nYear: ${this.year}\nType: ${this.type}`;
-  } 
-}
-
-const myFirstMotorcycle = new Motorcycle("Honda", "X-ADV", "2022", "Liquid-cooled 4-stroke 8-valve.");
-console.log(myFirstMotorcycle.getMotorcycleInfo());
