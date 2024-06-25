@@ -1,40 +1,17 @@
-// Captain tsubasa players
+alert("Enter a range number to guess");
+const min = parseInt(prompt("Enter the minimum value:"));
+const max = parseInt(prompt("Enter the maximum value:"));
+let userNumber;
+const randomNumber = Math.floor(Math.random() * (max - min + 1) + min);
+console.log(randomNumber);
 
-function Player(name, position, number, nationalSelection) {
-  this.name = name;
-  this.position = position;
-  this.number = number;
-  this.nationalSelection = nationalSelection;
-  this.isCaptain = false;
-  this.displayInfo = function () {
-    console.log(`
-      Player information:
-
-      Name: ${this.name}
-      Position: ${this.position}
-      Number: ${this.number}
-      National selection: ${this.nationalSelection}
-      Captain: ${this.isCaptain ? "Yes" : "No"}
-    `);
-  };
-  this.becomeCaptain = function () {
-    this.isCaptain = true;
-    console.log(`${this.name} has become captain of ${this.nationalSelection}`);
-  };
-}
-
-const tsubasa = new Player("Tsubasa Ozora", "MF", "10", "Japan");
-const genzo = new Player("Genzo Wakabayashi", "GK", "1", "Japan");
-const taro = new Player("Taro Misaki", "MF", "11", "Japan");
-
-// tsubasa.displayInfo();
-// genzo.displayInfo();
-// taro.displayInfo();
-
-tsubasa.becomeCaptain();
-
-tsubasa.displayInfo();
-genzo.displayInfo();
-taro.displayInfo();
-
-
+do {
+  userNumber = parseInt(
+    prompt(`Try to guess now. Enter a number between ${min} and ${max}:`)
+  );
+  alert(
+    userNumber === randomNumber
+      ? "Congratulations! You guessed the number"
+      : `Fail :( Try again`
+  );
+} while (userNumber !== randomNumber);
