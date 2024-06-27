@@ -1,55 +1,67 @@
-// Exercise: Stack of books
+// Exercise: Card Game implementation
 
-const bookStack = [];
+const cardsValues = [
+  "A",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "10",
+  "J",
+  "Q",
+  "K",
+];
+const cardSymbols = ["♠", "♣", "♥", "♦"];
+const wildCards = ["Joker", "Joker"];
+const NUMBER_OF_CARDS_TO_DEAL = 10;
 
-alert("Stack of books\nHere you can add, remove and look for books");
+// Create the deck
+const deck = [...wildCards];
 
-let option;
-do {
-  option = prompt(
-    "Choose an option\n1. Add a book\n2. Remove the last book\n3. Show all books\n0. Exit"
-  );
-  switch (option) {
-    case "1":
-      const bookName = prompt("Type the name of the book:");
-      addBook(bookName);
-      break;
-    case "2":
-      removeBook();
-      break;
-    case "3":
-      displayStackOfBooks();
-      break;
-    case "0":
-      alert("See ya!");
-      break;
-    default:
-      alert("Please, choose a correct option.");
-  }
-} while (option !== "0");
+// for (let i = 0; i < cardsValues.length; i++) {
+//   for (let j = 0; j < cardSymbols.length; j++) {
+//     deck.push({ value: cardsValues[i], symbol: cardSymbols[j] });
+//   }
+// }
 
-function addBook(book) {
-  bookStack.push(book);
-  alert(`The book ${book} was added successfully.`);
+deck.push(
+  ...cardsValues.flatMap((value) =>
+    cardSymbols.map((symbol) => ({ value, symbol }))
+  )
+);
+
+console.log("Original deck: \n", deck);
+
+// Shuffle the deck
+for (let i = 0; i < deck.length; i++) {
+  // Generate a random index
+  const randomIndex = Math.floor(Math.random() * deck.length);
+
+  // Swap the current card with the random card
+  deck.splice(randomIndex, 0, deck.splice(i, 1)[0]);
 }
 
-function removeBook() {
-  if (bookStack.length > 0) {
-    const removedBook = bookStack.pop();
-    alert(`The book ${removedBook} was removed successfully.`);
-  } else {
-    alert(`There aren't any books to remove.`);
-  }
+console.log("Shuffled deck: \n", deck);
+
+// Deal cards
+const player1 = [];
+const player2 = [];
+const player3 = [];
+const player4 = [];
+
+for (let i = 0; i < NUMBER_OF_CARDS_TO_DEAL; i++) {
+  // Deal a card to each player
+  player1.push(deck.splice(0, 1)[0]);
+  player2.push(deck.splice(0, 1)[0]);
+  player3.push(deck.splice(0, 1)[0]);
+  player4.push(deck.splice(0, 1)[0]);
 }
 
-function displayStackOfBooks() {
-  if (bookStack.length > 0) {
-    let message = "Stack of books\n";
-    bookStack.forEach((book, index) => {
-      message += `${index + 1}. ${book}\n`;
-    });
-    alert(message);
-  } else {
-    alert(`There aren't any books to show.`);
-  }
-}
+console.log("Player 1: \n", player1);
+console.log("Player 2: \n", player2);
+console.log("Player 3: \n", player3);
+console.log("Player 4: \n", player4);
