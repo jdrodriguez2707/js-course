@@ -1,14 +1,55 @@
-// Exercise: Add all the numbers of an array
+// Exercise: Stack of books
 
-const numbers = [1, 12, 19, 21, 17, 18, 67];
-let sum = 0;
-// const sum = numbers.reduce((accumulator, currentNumber) => {
-//   return accumulator + currentNumber;
-// }, 0);
-// console.log(sum);
+const bookStack = [];
 
-for (let i = 0; i < numbers.length; i++) {
-  sum += numbers[i];
+alert("Stack of books\nHere you can add, remove and look for books");
+
+let option;
+do {
+  option = prompt(
+    "Choose an option\n1. Add a book\n2. Remove the last book\n3. Show all books\n0. Exit"
+  );
+  switch (option) {
+    case "1":
+      const bookName = prompt("Type the name of the book:");
+      addBook(bookName);
+      break;
+    case "2":
+      removeBook();
+      break;
+    case "3":
+      displayStackOfBooks();
+      break;
+    case "0":
+      alert("See ya!");
+      break;
+    default:
+      alert("Please, choose a correct option.");
+  }
+} while (option !== "0");
+
+function addBook(book) {
+  bookStack.push(book);
+  alert(`The book ${book} was added successfully.`);
 }
 
-console.log(sum);
+function removeBook() {
+  if (bookStack.length > 0) {
+    const removedBook = bookStack.pop();
+    alert(`The book ${removedBook} was removed successfully.`);
+  } else {
+    alert(`There aren't any books to remove.`);
+  }
+}
+
+function displayStackOfBooks() {
+  if (bookStack.length > 0) {
+    let message = "Stack of books\n";
+    bookStack.forEach((book, index) => {
+      message += `${index + 1}. ${book}\n`;
+    });
+    alert(message);
+  } else {
+    alert(`There aren't any books to show.`);
+  }
+}
