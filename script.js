@@ -1,51 +1,40 @@
-let matrix = [
-  [1, 2, 3],
-  [4, 5, 6],
-  [7, 8, 9]
-]
+/*
+Algorithmic Tournament winner
 
-// let value = matrix[0][1]
-// console.log(value)
+- Only two teams compete against each other at a time.
+- One team is designated as the home team, while the other is the away team.
+- There's only a winner. No ties.
+- Teams earn 3 points for a win and 0 points for a loss.
+- The team with the highest total points win.
+- Input: two parameters(Array competitions, Array results)
+- competitions = [[homeTeam, awayTeam]...]
+- results = 1 means that the home team won, and a 0 means that the away team won.
+*/
 
-for (let i = 0; i < matrix.length; i++) {
-  for (let j = 0; j < matrix[i].length; j++) {
-    console.log(matrix[i][j])
-  }
-}
-
-function findElement(matrix, element) {
-  for (let i = 0; i < matrix.length; i++){
-    for (let j = 0; j < matrix[i].length; j++){
-      if (matrix[i][j] === element) {
-        return true
-      }
+function determinateWinner(competitions, results) {
+  const totalPoints = {};
+  let winner = "";
+  
+  competitions.forEach((competition, index) => {
+    const [homeTeam, awayTeam] = competition;
+    const winningTeam = results[index] === 1 ? homeTeam : awayTeam;
+    
+    totalPoints[winningTeam] = (totalPoints[winningTeam] || 0) + 3;
+    
+    if (!winner || totalPoints[winningTeam] > totalPoints[winner]) {
+      winner = winningTeam;
     }
-  }
-  return false
+  });
+  
+  console.log(`The winner is ${winner}`);
 }
 
-console.log(findElement(matrix, 5))
+const competitions = [
+  ["JavaScript", "C#"],
+  ["C#", "Python"],
+  ["Python", "JavaScript"]
+];
 
-// shallow copy
-let newMatrix = [...matrix];
-console.log(newMatrix);
+const results = [0, 0, 1];
 
-newMatrix[0][0] = 10;
-console.log(matrix);
-console.log(newMatrix); 
-
-
-// deep copy
-function duplicateMatrix(matrix) {
-  let newMatrix = []
-  for (let i = 0; i < matrix.length; i++) {
-    newMatrix[i] = [...matrix[i]]
-  }
-  return newMatrix
-}
-const matrixWithDeepCopy = duplicateMatrix(matrix)
-console.log(matrixWithDeepCopy);
-
-matrix[0][2] = -1;
-console.log(matrix);
-console.log(matrixWithDeepCopy); 
+determinateWinner(competitions, results);
