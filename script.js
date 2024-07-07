@@ -1,40 +1,26 @@
-/*
-Algorithmic Tournament winner
-
-- Only two teams compete against each other at a time.
-- One team is designated as the home team, while the other is the away team.
-- There's only a winner. No ties.
-- Teams earn 3 points for a win and 0 points for a loss.
-- The team with the highest total points win.
-- Input: two parameters(Array competitions, Array results)
-- competitions = [[homeTeam, awayTeam]...]
-- results = 1 means that the home team won, and a 0 means that the away team won.
-*/
-
-function determinateWinner(competitions, results) {
-  const totalPoints = {};
-  let winner = "";
-  
-  competitions.forEach((competition, index) => {
-    const [homeTeam, awayTeam] = competition;
-    const winningTeam = results[index] === 1 ? homeTeam : awayTeam;
-    
-    totalPoints[winningTeam] = (totalPoints[winningTeam] || 0) + 3;
-    
-    if (!winner || totalPoints[winningTeam] > totalPoints[winner]) {
-      winner = winningTeam;
-    }
-  });
-  
-  console.log(`The winner is ${winner}`);
+function Person(name, lastName, age) {
+  this.name = name;
+  this.lastName = lastName;
+  this.age = age;
 }
 
-const competitions = [
-  ["JavaScript", "C#"],
-  ["C#", "Python"],
-  ["Python", "JavaScript"]
-];
+const person1 = new Person("Johan", "Rodriguez", 20);
+person1.nationality = "Colombian";
+console.log(person1);
 
-const results = [0, 0, 1];
+const person2 = new Person("Maria", "Perez", 25);
+console.log(person2);
 
-determinateWinner(competitions, results);
+Person.prototype.greet = function () {
+  console.log(`Hello, my name is ${this.name} ${this.lastName}`);
+};
+
+const person3 = new Person("Pedro", "Gomez", 30);
+
+person1.greet();
+person2.greet();
+person3.greet();
+
+console.log(person1);
+console.log(person2);
+console.log(person3);
