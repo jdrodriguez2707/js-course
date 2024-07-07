@@ -1,26 +1,22 @@
-function Person(name, lastName, age) {
+// Define an object constructor
+function Animal(name) {
   this.name = name;
-  this.lastName = lastName;
-  this.age = age;
 }
 
-const person1 = new Person("Johan", "Rodriguez", 20);
-person1.nationality = "Colombian";
-console.log(person1);
-
-const person2 = new Person("Maria", "Perez", 25);
-console.log(person2);
-
-Person.prototype.greet = function () {
-  console.log(`Hello, my name is ${this.name} ${this.lastName}`);
+// Add a method to the prototype of the Animal constructor
+Animal.prototype.greet = function() {
+  console.log(`Hello, I'm ${this.name}`);
 };
 
-const person3 = new Person("Pedro", "Gomez", 30);
+// Create a Dog constructor that inherits from Animal
+function Dog(name, breed) {
+  Animal.call(this, name); // Call to Animal constructor
+  this.breed = breed;
+}
 
-person1.greet();
-person2.greet();
-person3.greet();
+Dog.prototype = Object.create(Animal.prototype); // Establish the prototype of Dog as Animal
+Dog.prototype.constructor = Dog; // Correct the constructor property of Dog
 
-console.log(person1);
-console.log(person2);
-console.log(person3);
+// Create a Dog object
+const myDog = new Dog('Max', 'Labrador');
+myDog.greet(); // Output: Hello, I'm Max
