@@ -1,40 +1,64 @@
-class Animal {
-  constructor(name, type) {
+class User {
+  constructor(name) {
+    this.id = Math.floor(Math.random() * 100) + 1;
     this.name = name;
-    this.type = type;
   }
 
-  toString() {
-    return `${this.name} is a ${this.type}`;
+  logIn(username, password) {
+    const isRegistered = this.validateUser(username, password);
+
+    console.log(
+      isRegistered
+        ? `Welcome, ${this.name}! (${this.showTimeline(username)})`
+        : "Username or password is incorrect. Try it again."
+    );
+  }
+
+  validateUser(username, password) {
+    return usersDatabase.some((userDataBase) => username === userDataBase.username && password === userDataBase.password);
+  }
+
+  showTimeline(username) {
+    const userTimeline = usersTimeline.find(
+      (userTimeline) => username === userTimeline.username
+    ).timeline;
+
+    return userTimeline ? userTimeline : "User has no timeline yet.";
   }
 }
 
-class Dog extends Animal {
-  constructor(name, type, breed) {
-    super(name, type);
-    this.breed = breed;
-  }
+const usersDatabase = [
+  {
+    username: "andres",
+    password: "123",
+  },
+  {
+    username: "caroline",
+    password: "456",
+  },
+  {
+    username: "mariana",
+    password: "789",
+  },
+];
 
-  bark() {
-    return "Woof! Woof!";
-  }
-}
+const usersTimeline = [
+  {
+    username: "andres",
+    timeline: "I love JavaScript!",
+  },
+  {
+    username: "caroline",
+    timeline: "Python is the best",
+  },
+  {
+    username: "mariana",
+    timeline: "I like more coffee than tea",
+  },
+];
 
-const dog = new Dog("Buddy", "Dog", "Golden Retriever");
-console.log(dog.toString()); // Buddy is a Dog
-console.log(dog.bark()); // Woof! Woof!
-
-// dog.newMethod = function () {
-//   return "New Method";
-// };
-
-// console.log(dog.newMethod()); 
-
-Dog.prototype.newMethod = function () {
-  return "New Method";
-}
-
-const dog2 = new Dog("Frosty", "Dog", "Bichon Frisé");
-console.log(dog2.newMethod());
-
-// https://chatgpt.com/share/424248f9-641a-4cf4-b3aa-66c812b144d0
+const user1 = new User("Mariana");
+// console.log("Id: " + user1.id);
+// console.log("Name: " + user1.name);
+// console.log("Timeline: " + user1.showTimeline("andres"));
+user1.logIn("mariana", "789");
