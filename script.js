@@ -1,22 +1,40 @@
-// Define an object constructor
-function Animal(name) {
-  this.name = name;
+class Animal {
+  constructor(name, type) {
+    this.name = name;
+    this.type = type;
+  }
+
+  toString() {
+    return `${this.name} is a ${this.type}`;
+  }
 }
 
-// Add a method to the prototype of the Animal constructor
-Animal.prototype.greet = function() {
-  console.log(`Hello, I'm ${this.name}`);
-};
+class Dog extends Animal {
+  constructor(name, type, breed) {
+    super(name, type);
+    this.breed = breed;
+  }
 
-// Create a Dog constructor that inherits from Animal
-function Dog(name, breed) {
-  Animal.call(this, name); // Call to Animal constructor
-  this.breed = breed;
+  bark() {
+    return "Woof! Woof!";
+  }
 }
 
-Dog.prototype = Object.create(Animal.prototype); // Establish the prototype of Dog as Animal
-Dog.prototype.constructor = Dog; // Correct the constructor property of Dog
+const dog = new Dog("Buddy", "Dog", "Golden Retriever");
+console.log(dog.toString()); // Buddy is a Dog
+console.log(dog.bark()); // Woof! Woof!
 
-// Create a Dog object
-const myDog = new Dog('Max', 'Labrador');
-myDog.greet(); // Output: Hello, I'm Max
+// dog.newMethod = function () {
+//   return "New Method";
+// };
+
+// console.log(dog.newMethod()); 
+
+Dog.prototype.newMethod = function () {
+  return "New Method";
+}
+
+const dog2 = new Dog("Frosty", "Dog", "Bichon Frisé");
+console.log(dog2.newMethod());
+
+// https://chatgpt.com/share/424248f9-641a-4cf4-b3aa-66c812b144d0
